@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Regexp</title>
+    <link rel="stylesheet" href="styles/styles.css" />
+    <script src="js/regexp.js" defer></script>
+</head>
+
+<body>
+    <div class="main">
+        <h1 class="title">
+            Regular expressoins
+        </h1>
+        <div class="container">
+            <form class="mainForm" id="form">
+                <div class="inputBlock" id="userNameBlock">
+                    <input class="input" type="text" id="userName" placeholder="input name" data-format="format: text will be without numbers and special symbols">
+                </div>
+                <div class="inputBlock" id="phoneBlock">
+                    <input class="input" type="text" id="phone" placeholder="input phone number" data-format="format: +7(000)000-0000">
+                </div>
+                <div class="inputBlock" id="emailBlock">
+                    <input class="input" type="email" name="email" id="email" placeholder="Input e-mail" data-format="format: (boxName)@(FirstLevelDomain).(secondLevelDomain). Don't allows use special symbols near the '@''">
+                </div>
+                <div class="inputBlock" id="commentBlock">
+                    <input class="input" type="text" placeholder="comment" id="comment" data-format="format:input any symbols">
+                </div>
+                <div class="textArea" id=textArea>
+                    Reporter: 'What do you mean, Geoffrey?' G. Gilmore: 'Well, you <b>don't</b> need a lot of resources now to be able to make a movie with a pretty good production quality. There were always people in the past who made films for $5,000,
+                    but not that many. Today, using a good consumer-level camera and a final cut pro program on a computer;you can make a movie with a high level of production quality.' Reporter: 'Do the creative giants of the past still dominate or has
+                    a new generation truly taken hold?' G. Gilmore: 'The creative giants of the recent past still have an enormous power.' Reporter: 'There is a sense that <b>there's</b> been a change in the demographics of the film audience. <b>it's</b>                    wrong opinion.' G. Gilmore: 'You <b>aren't</b> say that the audience is getting older. That means more diverse and more moral challenging works are going to be permitted. I think the demographics are getting better.'
+                </div>
+                <button class="button" id="sendButton">Send</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

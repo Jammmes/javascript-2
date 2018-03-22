@@ -1,0 +1,105 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mainContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border: 5px solid gray;
+    border-radius: 5px;
+    margin: 10px 0;
+    background: rgb(241, 237, 229);
+}
+
+.leftSide {
+    margin: 10px;
+}
+
+.rightSide {
+    margin: 10px;
+}
+
+.title {
+    text-align: center;
+    border-bottom: 2px solid;
+    margin: 20px 0 20px;
+}
+
+.list__item {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border: 0.5px dotted gray;
+    margin: 5px;
+}
+
+.itemBlock {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 5px 15px;
+}
+
+.itemBlock__line {
+    display: flex;
+    flex-direction: row;
+}
+
+.txtReview {
+    margin: 10px 0;
+    resize: none;
+}
+
+.button {
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+}
+
+.button_150px {
+    width: 200px;
+    margin: 10px;
+}
+
+.goodsId {
+    font-size: 2em;
+}
+
+.label {
+    color: dimgray;
+    margin: 0 10px 0 0;
+}
+
+.summary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.summary__line {
+    display: flex;
+    flex-direction: row;
+}
+
+.reviewsContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border: 5px solid gray;
+    border-radius: 5px;
+    margin: 10px 300px;
+    background: rgb(241, 237, 229);
+}
+
+.reviewList {
+    width: 100%;
+}

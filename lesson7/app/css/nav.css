@@ -1,0 +1,17 @@
+.nav__item {
+  float: left;
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 24px;
+  letter-spacing: 0.8px;
+  padding: 0 15px;
+  color: #1d1d1d; }
+
+.nav__link {
+  display: inline-block;
+  color: inherit; }
+  .nav__link:hover {
+    color: #10c9c3; }
+
+.nav__item_active {
+  color: #10c9c3; }

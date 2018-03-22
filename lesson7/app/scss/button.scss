@@ -1,0 +1,26 @@
+$btnBGColor:#10c9c3;
+$btnTextColor:white;
+.button {
+    border: none;
+    width: 140px;
+    padding: 10px;
+    background-color: $btnBGColor;
+    border-radius: 5px;
+    display: block;
+    color: $btnTextColor;
+    &:hover {
+        color: inherit;
+    }
+}
+
+.button_overCenter {
+    position: absolute;
+    top: 42%;
+    left: 47%;
+    z-index: 1001;
+}
+
+.button__input {
+    background-color: transparent;
+    border: none;
+}

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>cart</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="main.js" defer></script>
+    <script src="review.js" defer></script>
+</head>
+
+<body>
+    <!-- Задание 1 - работа с корзиной -->
+    <div class="mainContainer">
+        <div class="leftSide">
+            <h1 class="title">Goods list</h1>
+            <div class="goodsContainer" id="goodsContainer"></div>
+        </div>
+        <div class="rightSide ">
+            <h1 class="title ">Cart</h1>
+            <div class="cartContainer " id="cartContainer">
+
+            </div>
+            <div class="summary" id="summary">
+            </div>
+        </div>
+    </div>
+    <!-- Задание 2 - модуль сбора отзывов -->
+    <div class="reviewsModule">
+        <h1 class="title">Reviews module</h1>
+        <div class="reviewsContainer">
+            <ul class="list" id="reviewList">
+                <li class="list__item">
+                    <div class="itemBlock">
+                        <div class="itemBlock__line">
+                            <input type="text" id="inputID" placeholder="input review ID">
+                        </div>
+                        <div class="itemBlock__line">
+                            <input type="text" id="inputUserID" placeholder="input user ID">
+                        </div>
+                    </div>
+                    <div class="itemBlock">
+                        <div class="itemBlock__line">
+                            <textarea id="txtArea_add" cols="30" rows="5" class="txtReview"></textarea>
+                        </div>
+                    </div>
+                    <div class="itemBlock">
+                        <div class="itemBlock__line">
+                            <button class="button button_150px" id="btnAddReview">Add review</button>
+                        </div>
+                    </div>
+                </li>
+                <li class="list__item">
+                    <div class="itemBlock">
+                        <div class="itemBlock__line">
+                            <input type="text" id="inputReview" placeholder="input review ID">
+                        </div>
+                    </div>
+                    <div class="itemBlock">
+                        <div class="itemBlock__line">
+                            <button class="button button_150px" id="btnAccReview"> Accept review</button>
+                        </div>
+                    </div>
+                    <div class="itemBlock">
+                        <div class="itemBlock__line">
+                            <button class="button button_150px" id="btnDelReview">Delete review</button>
+                        </div>
+                    </div>
+                </li>
+                <li class="list__item">
+                    <div class="itemBlock">
+                        <div class="itemBlock__line">
+                            <button class="button button_150px" id="btnShowReview">Show all reviews</button>
+                        </div>
+                    </div>
+                    <div class="itemBlock">
+                        <div class="itemBlock__line">
+                            <button class="button button_150px" id="btnHideReview">Hide reviews</button>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</body>
+
+</html>

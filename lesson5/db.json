@@ -1,0 +1,76 @@
+{
+    "goods": [{
+            "id": 1,
+            "price": 850.7,
+            "name": "Мяч футбольный"
+        },
+        {
+            "id": 2,
+            "price": 620,
+            "name": "Мяч баскетбольный"
+        },
+        {
+            "id": 3,
+            "price": 575,
+            "name": "Мяч волейбольный"
+        },
+        {
+            "id": 4,
+            "price": 3900,
+            "name": "Костюм спортивный"
+        },
+        {
+            "id": 5,
+            "price": 900,
+            "name": "Гиря 32 кг"
+        }
+    ],
+    "cart": [{
+            "id": 2,
+            "price": 620,
+            "name": "Мяч баскетбольный",
+            "quantity": 1
+        },
+        {
+            "id": 3,
+            "price": 575,
+            "name": "Мяч волейбольный",
+            "quantity": 1
+        },
+        {
+            "id": "4",
+            "name": "Костюм спортивный",
+            "price": "3900",
+            "quantity": "2"
+        }
+    ],
+    "review": [{
+            "id": 1,
+            "userId": 1,
+            "comment": "good shopping",
+            "isAccept": 1
+        },
+        {
+            "id": 2,
+            "userId": 3,
+            "comment": "bad shopping",
+            "isAccept": 0
+        },
+        {
+            "id": "3",
+            "userId": "7",
+            "comment": "Hello, it is my review",
+            "isAccept": 0
+        },
+        {
+            "id": "4",
+            "userId": "4",
+            "comment": "Сообщение от пользователя 4 - хороший отзыв",
+            "isAccept": 0
+        }
+    ],
+    "reviewBuffer": [{
+        "id": "4",
+        "isAccept": 1
+    }]
+}

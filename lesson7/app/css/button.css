@@ -1,0 +1,20 @@
+.button {
+  border: none;
+  width: 140px;
+  padding: 10px;
+  background-color: #10c9c3;
+  border-radius: 5px;
+  display: block;
+  color: white; }
+  .button:hover {
+    color: inherit; }
+
+.button_overCenter {
+  position: absolute;
+  top: 42%;
+  left: 47%;
+  z-index: 1001; }
+
+.button__input {
+  background-color: transparent;
+  border: none; }
