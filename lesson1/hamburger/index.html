@@ -1,28 +1,28 @@
 <html>
 
 <head>
-    <script src="script.js" charset="utf-8"></script>
+    <script src="hamburger.js" charset="utf-8"></script>
+    <script src="order.js" charset="utf-8"></script>
     <script src="interface.js" charset="utf-8"></script>
     <link rel="stylesheet" href="styles.css">
+    <title>Hamburger</title>
 </head>
 
 <body>
     <div class="container">
         <h1 class="title">Составление своего гамбургера</h1>
         <div class="main">
-            <form class="mainForm">
+            <form class="mainForm" id="mainForm">
                 <h2 class="title">Размер</h2>
-                <input type="radio" name="size" value="SIZE_SMALL"> Большой<br>
-                <input type="radio" name="size" value="SIZE_LARGE" checked>Маленький<br>
-
+                <input required class="input" type="radio" name="size" id="rbSizeSmall" value="SIZE_SMALL" checked><label for="rbSizeSmall">Маленький</label><br>
+                <input class="input" type="radio" name="size" id="rbSizeLarge" value="SIZE_LARGE"><label for="rbSizeLarge">Большой</label><br>
                 <h2 class="title">Начинка</h2>
-                <input type="radio" name="stuffing" value="STUFFING_CHEESE"> Сыр<br>
-                <input type="radio" name="stuffing" value="STUFFING_SALAD">Салат<br>
-                <input type="radio" name="stuffing" value="STUFFING_POTATO" checked>Картофель<br>
-
+                <input required class="input" type="radio" name="stuffing" id="rbChesse" value="STUFFING_CHEESE" checked><label for="rbChesse">Сыр</label><br>
+                <input class="input" type="radio" name="stuffing" id="rbSalad" value="STUFFING_SALAD"><label for="rbSalad">Салат</label><br>
+                <input class="input" type="radio" name="stuffing" id="rbPotato" value="STUFFING_POTATO"><label for="rbPotato">Картофель</label><br>
                 <h2 class="title">Приправы</h2>
-                <input type="checkbox" name="topping" value="TOPPING_MAYO" checked>Майонез<br>
-                <input type="checkbox" name="topping" value="TOPPING_SPICE">Специи<br>
+                <input class="input" type="checkbox" name="topping" id="cbMayo" value="TOPPING_MAYO"><label for="cbMayo">Майонез</label><br>
+                <input class="input" type="checkbox" name="topping" id="cbSpice" value="TOPPING_SPICE"><label for="cbSpice">Специи</label><br>
                 <hr>
                 <input type="button" id="buttonOrder" value="Заказать">
             </form>
@@ -49,6 +49,8 @@
                         </div>
                     </div>
             </div>
+        </div>
+    </div>
 </body>
 
 </html>
