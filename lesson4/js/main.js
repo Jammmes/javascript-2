@@ -33,8 +33,7 @@
           $control.append($content);
         })
         // При запуске активируем по умолчанию первую вкладку
-      var $li = $('li');
-      $li.eq(1).click();
+      $('li').eq(0).click();
     }
 
     /* Активирует вкладку
@@ -86,23 +85,25 @@
 
     //**************//  Задание 2,3    //****************************
 
-    //Установим обработчик на поле ввода
-    $('#inputCity').on('input', function () {
+    // Установим обработчик на поле ввода
+    $('#inputCity').on('focus', function () {
       var inputText = $(this).val();
       //
       if (inputText.length >= 3) {
         loadCity($(this));
       };
     });
+
     //Установим обработчик на кнопку "Send"
     $('#btnSend').on('click', function (e) {
       e.preventDefault();
       loadCity($('#inputCity'));
     })
 
-    /*По входящим данным подгружает с сервера и возвращает список городов
-     *@param txt - строка для поиска города по наименованию
+    /** По полному или частичному наименованию города создается запрос для создания списка
+     * подходящих по наименованию городов
      * 
+     * @param {any} obj ссылка на input, содержащий наименование или часть города
      */
     function loadCity(obj) {
       var txt = obj.val();
@@ -112,40 +113,38 @@
       $.ajax({
         url: setUrl,
         type: 'GET',
-        success: function (data, obj) {
-          //Здесь контекст обрывается
-          //Передаем JSON в функцию для обработки
+        success: function (data) {
+          //Передаем JSON и ссылку на input в функцию для обработки
           createCitylist(data, obj);
         }
       });
     };
 
-    /* Создаем из JSON список городов и подставляем его в выпадающий список 
-     *
+    /** Подставляем список городо в поле ввода
      * 
+     * 
+     * @param {any} data - список городов
+     * @param {any} obj  - ссылка на input
      */
     function createCitylist(data, obj) {
-      //пока контекст потерян, obj не работает
-      //нахожу инпут ручками
-      var inputC = $('#inputCity');
-      //сначала очистим список
-      $('#cityList').empty();
-      var cities = $.parseJSON(data);
+      var inputC = obj;
+      var $cityList = $('#cityList');
+      //сначала очистим список значений для input-а
+      $cityList.empty();
+      var cities = JSON.parse(data);
       //проверка на наличие найденных городов
-      if (cities['result'] == 0) {
+      if (cities['result'] === 0) {
         inputC.val('');
       } else {
-        //В цикле дополним input данными
-        for (var i = 0; i < cities.length; i++) {
-          var cityName = cities[i]['name'];
-          var cityRegion = cities[i]['id_region'];
-          $('#cityList').append('<option label="' + cityRegion + '" value="' + cityName + '">')
-        }
-        //сымитируем двойной клик для раскрытия элементов списка
-        inputC.dblclick();
+        //В цикле дополним список для input данными
+        cities.forEach(function (element) {
+          var cityName = element['name'];
+          var cityRegion = element['id_region'];
+          var $option = $('<option/>').attr({ "label": cityRegion, "value": cityName });
+          $cityList.append($option);
+        })
       }
     }
-
 
   });
 })(jQuery)
