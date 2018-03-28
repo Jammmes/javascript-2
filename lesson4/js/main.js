@@ -1,36 +1,46 @@
 (function($) {
     $(function() {
 
-        /*Создает форму с вкладками
-         *@param- данные для вкладок в формате JSON
-         *@LIMIT - ограничение: 15 вкладок максимум
+        /**
+         * Создает форму с вкладками
+         * @LIMIT - ограничение: 15 вкладок максимум
+         * @param {any} JSONdata данные для вкладок в формате JSON
          */
         function createForm(JSONdata) {
             var LIMIT = 15;
-            var dataArr = $.parseJSON(JSONdata);
-            $('#container').append('<div class="control"></div>');
-            $('.control').append('<ul class="control__captions"></div>');
-            for (var i = 0; i < dataArr.length; i++) {
-                var caption = dataArr[i]['caption'];
-                var txt = dataArr[i]['text'];
-                $('.control__captions').append('<li class = "item" data-capID="' + i + '">' + caption + '</div>');
-                $('.control').append('<div class="content" data-tabID="' + i + '">' + txt + '</div>');
-                if (i === LIMIT - 1) { i = dataArr.length };
-            }
-            //При запуске активируем по умолчанию первую вкладку
-            setActive(0, null);
-
-            //Установим обработчик на событие click используя всплытие
-            $('.control__captions').on('click', '.item', function(event) {
-                //
+            var dataArr = JSON.parse(JSONdata).slice(0, LIMIT);
+            var $control = $('<div/>').addClass('control');
+            $('#container').append($control);
+            var $captions = $('<ul/>').addClass('control__captions').on('click', '.item', function(event) {
                 setActive(null, $(this));
             });
+            $control.append($captions);
+
+            dataArr.forEach(function(element, i) {
+                var caption = element.caption;
+                var txt = element.text;
+                var $li = $('<li/>', {
+                    class: 'item',
+                    text: caption
+                });
+                $li.attr('data-capID', i);
+                $captions.append($li);
+                var $content = $('<div/>', {
+                    class: 'content',
+                    text: txt
+                });
+                $content.attr('data-tabID', i);
+                $control.append($content);
+            })
+
+            // При запуске активируем по умолчанию первую вкладку
+            setActive(0, null);
         }
 
         /* Активирует вкладку
          *
-         *@param manual - номер вкладки, которую нужно активировать / ручной тип выполнения
-         *@param e - контекст, которые передается при автоматическом типе выполнения
+         * @param manual - номер вкладки, которую нужно активировать / ручной тип выполнения
+         * @param e - контекст, которые передается при автоматическом типе выполнения
          */
         function setActive(manual, e) {
             //Если запуск вручную
