@@ -6,11 +6,25 @@ var userName = document.getElementById('userName');
 var phone = document.getElementById('phone');
 var email = document.getElementById('email');
 var comment = document.getElementById('comment');
-// Регулярные выражения
-var pcreName = /^([^\d\s])+$/;
-var pcrePhone = /^\+7\(\d{3}\)\d{3}\-\d{4}$/;
-var pcreEmail = /^[a-zA-Z0-9]+[a-zA-Z0-9.-]*[a-zA-Z0-9]\@[a-zA-Z0-9]+[a-zA-Z0-9.-]+[a-zA-Z0-9]$/;
-var pcreComment = /\b.+/;
+// Данные для проверки введенной информации
+var inputFormat = {
+    name: {
+        pcre: /^([^\d])+$/,
+        format: 'Text will not consist numbers'
+    },
+    phone: {
+        pcre: /^\+7\(\d{3}\)\d{3}\-\d{4}$/,
+        format: 'Use +7(000)000-0000 format.'
+    },
+    email: {
+        pcre: /^[\w\d\.\-]*[\w\7]\@[\w\d]+[\w\d\.\-]+[\.]+[\w]{2,5}$/,
+        format: 'Allow to use subdomains, symbol @ is necessary, length of last-level domain must be in 2-5 symbols'
+    },
+    comment: {
+        pcre: /.+/,
+        format: 'Any symbols'
+    }
+};
 
 btn.addEventListener("click", checkRegexp);
 
@@ -23,26 +37,26 @@ function checkRegexp(e) {
     textArea.innerText = txt.replace(/\B(\')/mg, '\"');
     //Проверяем Имя
     var textName = userName.value;
-    var isNameValid = pcreName.test(textName);
-    showChecking(userName, isNameValid);
+    var isNameValid = inputFormat.name.pcre.test(textName);
+    showChecking(userName, inputFormat.name, isNameValid);
     //Проверяем телефон
     var phoneNumber = phone.value;
-    var isPhoneValid = pcrePhone.test(phoneNumber);
-    showChecking(phone, isPhoneValid);
+    var isPhoneValid = inputFormat.phone.pcre.test(phoneNumber);
+    showChecking(phone, inputFormat.phone, isPhoneValid);
     //Проверяем email
     var emailText = email.value;
-    var isEmailValid = pcreEmail.test(emailText);
-    showChecking(email, isEmailValid);
+    var isEmailValid = inputFormat.email.pcre.test(emailText);
+    showChecking(email, inputFormat.email, isEmailValid);
     //Проверяем текст
     var commentText = comment.value;
-    var isCommentValid = pcreComment.test(commentText);
-    showChecking(comment, isCommentValid);
+    var isCommentValid = inputFormat.comment.pcre.test(commentText);
+    showChecking(comment, inputFormat.comment, isCommentValid);
 }
 
 /*
  *Визуальное отображение валидации
  */
-function showChecking(elem, isValid) {
+function showChecking(elem, input, isValid) {
     var parentElem = elem.parentNode;
     //Сначала удалим старое уведомление
     if (parentElem.children[1]) {
@@ -55,7 +69,7 @@ function showChecking(elem, isValid) {
         }
         //Валидация не пройдена
     } else {
-        var formatInfo = elem.dataset.format;
+        var formatInfo = input.format;
         // Отображаем уведомление
         var tipElem = document.createElement('div');
         var coords = elem.getBoundingClientRect();
@@ -63,7 +77,7 @@ function showChecking(elem, isValid) {
         var left = coords.right;
         //
         tipElem.className = 'tip'
-        tipElem.innerHTML = 'please input data in correct ' + formatInfo;
+        tipElem.innerHTML = 'please input correct data. ' + formatInfo;
         parentElem.appendChild(tipElem);
         // не вылезать за левую границу окна
         if (left < 0) {
