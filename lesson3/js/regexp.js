@@ -28,8 +28,10 @@ var inputFormat = {
 
 btn.addEventListener("click", checkRegexp);
 
-/*
- *Проверка элементов формы на валидацию
+/**Проверка элементов формы на валидацию
+ * 
+ * 
+ * @param {any} e - событие click
  */
 function checkRegexp(e) {
     e.preventDefault();
@@ -53,8 +55,12 @@ function checkRegexp(e) {
     showChecking(comment, inputFormat.comment, isCommentValid);
 }
 
-/*
- *Визуальное отображение валидации
+/** Визуальное отображение процесса валидации
+ * 
+ * 
+ * @param {any} elem - проверяемый DOM элемент
+ * @param {any} input - объект, в котором описаны правила проверки
+ * @param {any} isValid - признак - прохождения валидации
  */
 function showChecking(elem, input, isValid) {
     var parentElem = elem.parentNode;
