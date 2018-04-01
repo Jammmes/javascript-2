@@ -87,7 +87,6 @@
      * @param {any} elements - массив элементов для уведомления
      */
     function showWarning(elements) {
-      console.log(elements);
       // Удалим старое окно
       $('.ui-dialog').remove()
         //
