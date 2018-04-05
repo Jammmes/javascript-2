@@ -1,9 +1,9 @@
 //CONST
 var POKEMON_ALL = "https://pokeapi.co/api/v2/pokemon/?limit=151";
+var POKEMON_IMG = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/';
 var TIME_OUT = 15000;
 // VARS
 var pokemonCount = 0;
-
 
 /* Класс, хранилище покемонов
  * Constructor
@@ -14,7 +14,6 @@ function PokemonStorage(url) {
     this.arrPokemons = [];
     this.lastOffset = 0;
 }
-
 
 /** Отрисовка дом элементов на основании полученных данных
  * 
@@ -27,7 +26,9 @@ PokemonStorage.prototype.renderPokemons = function(loadResults) {
     var row = document.createElement('div');
     //
     for (var i = 0; i < loadResults['results'].length; i++) {
-        var pokemonName = loadResults['results'][i]['name'];
+        var pokemonName = loadResults['results'][i].name;
+        var id = i + 1;
+        var picture = POKEMON_IMG + id + '.png';
         var item = document.createElement('div');
         var title = document.createElement('div');
         var img = document.createElement('img');
@@ -37,8 +38,8 @@ PokemonStorage.prototype.renderPokemons = function(loadResults) {
         img.classList.add('item__img');
         //
         title.innerText = pokemonName;
-        img.src = 'img/' + (pokemonCount + 1) + '.png';
-        //
+        img.src = picture;
+
         item.appendChild(title);
         item.appendChild(img);
         row.appendChild(item);
@@ -56,8 +57,8 @@ PokemonStorage.prototype.renderPokemons = function(loadResults) {
     doPokemonsClick(pokemons);
 }
 
-/**
- * 
+/** Отправка AJAX запроса 
+ *  передача результата запроса в функцию renderPokemons
  * 
  */
 PokemonStorage.prototype.loadPokemons = function() {
@@ -70,9 +71,9 @@ PokemonStorage.prototype.loadPokemons = function() {
     xhr.open('GET', url, true);
     xhr.timeout = TIME_OUT;
     xhr.ontimeout = function() {
-        console.log('Время вышло');
+        console.log('Time is up');
         var container = document.getElementById('container');
-        container.innerHTML = '<h1 class="error"> Pokemons do not loaded, please press F5 for reload the page</>';
+        container.innerHTML = '<h1 class="error"> Pokemons don`t loaded, please press F5 for reload the page</>';
     }
     xhr.send();
     xhr.onreadystatechange = function() {
